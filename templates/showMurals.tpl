@@ -10,12 +10,11 @@
                             <img src="images/{$mural->imagen}" alt="">
                             <div class="card-body">
                                 <p class="card-text">{$mural->nombre}</p>
+                                <p class="card-text">{$mural->lugar}</p>
+                                <p class="card-text">{$mural->anuario}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-
-
-                                        <a type="button" class="btn btn-dark" href="verDetalles/{$mural->id_mural}">Ver   detalles</a>
-
+                                        <a type="button" class="btn btn-dark" href="verDetalles/{$mural->id_mural}">Ver detalles</a>
                                     </div>
                                     <small class="text-muted">{$mural->ubicacion}</small>
                                 </div>
