@@ -22,16 +22,29 @@ class MuralsModels
 
     return $murals;
   }
+  
   //FUNCION QUE ME TRAE  INFORMACION EXTRA DEL MURAL
   function getMuralsById($id)
   {
-
     $query = $this->db->prepare('SELECT * FROM murales JOIN tipos ON tipos.id_tipo = murales.id_tipo WHERE id_mural = ?');
     $query->execute([$id]);
-
-
     $mural = $query->fetch(PDO::FETCH_OBJ);
-
     return $mural;
   }
-}
+
+  /*function getMuralsByTyps($id)
+  {
+    $query = $this->db->prepare('SELECT * FROM murales WHERE id_tipo = ?');
+    $query->execute([$id]);
+    $muralByCategories = $query->fetchAll(PDO::FETCH_OBJ);
+    return $muralByCategories;
+  }*/
+
+  
+  /*function insertMural($nombre, $descripcion, $ubicacion, $anuario, $lugar, $imagen){
+    $query = $this->db->prepare('INSERT INTO `murales`(nombre,descripcion,id_tipo,lugar,anuario, lugar, imagen)VALUES(?,?,?,?,?,?,?)' );
+    $query->execute([$nombre, $descripcion, $ubicacion, $anuario, $lugar, $imagen]);
+    return $query; 
+    header("Location: " . BASE_URL);    */
+  }
+

@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <link rel="icon" type="image/x-icon" href=" images/favicon.ico">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" type="image/x-icon" href=" ./images/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
   <title> Arte y muralismo</title>
 </head>
 
@@ -30,20 +30,9 @@
                     d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
                 </svg></a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Tecnicas
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="tecnicas/1">Pinturas</a></li>
-                <li><a class="dropdown-item" href="tecnicas/2">Mosaicos</a></li>
-                <li><a class="dropdown-item" href="tecnicas/3">Esgrafiñado</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-              </ul>
-            </li>
+            <a class="nav-link active" aria-current="page"  href="techniques">
+             Tecnicas
+            </a>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
@@ -75,7 +64,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Iniciar Sesion</a>
+              <a class="nav-link" href="logIn">Iniciar Sesion</a>
             </li>
           </ul>
 
@@ -85,7 +74,7 @@
               <img src="https://github.com/Lucio08.png" alt="mdo" width="32" height="32" class="rounded-circle">
             </a>
             <ul class="dropdown-menu text-small shadow">
-              <li><a class="dropdown-item" href="#">Administrar Pagina</a></li>
+              <li><a class="dropdown-item" href="addTechniques">Administrar Tecnicas</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
               <li><a class="dropdown-item" href="#">Profile</a></li>
               <li>
@@ -98,7 +87,7 @@
       </div>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Buscar</button>
+        <a class="btn btn-outline-success" href="" type="submit">Search...</a>
       </form>
       </div>
       </div>

@@ -2,6 +2,8 @@
 include_once 'models/muralsModel.php';
 include_once 'views/muralsView.php';
 
+
+
 class MuralsControllers
 {
     //Controlador que se encarga de coordinar todo lo referido a murales
@@ -19,16 +21,18 @@ class MuralsControllers
         //obtengo murales del modelo
         $murals = $this->model->getAllMurals();
         //actualizo la vista
-        $this->view->showMurals($murals);
-
+        $this->view->showMurals($murals);   
     }
 
     function showMuralsById($id){
-        
         $muralsById = $this->model->getMuralsById($id);
         $this->view->showMuralsById($muralsById);
     }
 
-    
-   
+   /* function listMuralsByTyps($id) {
+        //$typs = $this->model->getTypes();
+        $itemsByCategories = $this->model->getMuralsByTyps($id);
+        $this->view->showMuralsByCategories($itemsByCategories);
+    }*/
+      
 }

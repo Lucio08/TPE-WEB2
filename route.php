@@ -24,12 +24,21 @@ switch ($params[0]) {
     case 'home':
         $MuralsController->showMurals();
         break;
-    case 'verDetalles':       
+    case 'viewDetail':       
         $MuralsController->showMuralsById($params[1]);
         break;
-    case 'tecnicas':
-        $TypsController->searchByTyps($params[1]);
+    
+    case 'techniques':
+        $TypsController->types();
         break;
+   
+
+    //Segunda parte    
+   case 'addTechniques':
+        $TypsController->createTypesMurals();
+        break;
+    
+ 
 
 
     default:

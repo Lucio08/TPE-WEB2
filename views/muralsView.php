@@ -10,16 +10,26 @@ class MuralsViews
   }
   function showMurals($murals)
   {
+    /*
+    asigno varibales que voy a usar en el template que tiene el valor de la variable que me trae
+    el constructor
+    */
+
     $this->smarty->assign('murales', $murals);
     $this->smarty->display('templates/showMurals.tpl');
-    }
-   
-    function showMuralsById($muralsById)
+  }
+
+  function showMuralsById($muralsById)
   {
     $this->smarty->assign('mural', $muralsById);
     $this->smarty->display('templates/viewMural.tpl');
   }
- 
-  }
-  
 
+  function showMuralsByCategories($itemsByCategories){
+    $this->smarty->assign('muralC', $itemsByCategories);
+    $this->smarty->display('techniques.tpl');
+}
+ /* function showAddMural(){
+    $this->
+  }*/
+}

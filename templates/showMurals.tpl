@@ -1,4 +1,4 @@
-{include file="header.tpl" }
+{include file="templates/header.tpl" }
 {foreach from=$murales item=$mural}
     <main>
         <div class="album py-5 bg-light">
@@ -11,10 +11,10 @@
                             <div class="card-body">
                                 <p class="card-text">{$mural->nombre}</p>
                                 <p class="card-text">{$mural->lugar}</p>
-                                <p class="card-text">{$mural->anuario}</p>
+                                <p class="card-text">Año:   {$mural->anuario}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a type="button" class="btn btn-dark" href="verDetalles/{$mural->id_mural}">Ver detalles</a>
+                                        <a type="button" class="btn btn-dark" href="viewDetail/{$mural->id_mural}">Ver detalles</a>
                                     </div>
                                     <small class="text-muted">{$mural->ubicacion}</small>
                                 </div>
