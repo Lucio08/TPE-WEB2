@@ -1,6 +1,6 @@
 {include file="templates/general/header.tpl" }
 <div class="content">
-  <form class="row g-3" action="addMurals" method="POST">
+  <form class="row g-3" action="addMurals" method="POST" enctype="multipart/form-data">
 
     <select name="name-categories">
       {foreach from=$techniques item=technique}
@@ -30,7 +30,7 @@
     </div>
     <div class="col-md-6">
       <label for="name-img" class="form-label">Imagen: </label>
-      <input type="text" class="form-control" name="name-img">
+      <input type="file" class="form-control" name="name-img">
     </div>
     <div class="col-12">
       <button type="submit" class="btn btn-primary">Agregar mural</button>

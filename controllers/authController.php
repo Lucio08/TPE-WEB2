@@ -19,7 +19,7 @@ class  AuthController
     }
 
     public function generateHash(){
-        $hash = password_hash('12345',PASSWORD_DEFAULT);
+        $hash = password_hash('12345',PASSWORD_BCRYPT);
         echo $hash;
     }
 
