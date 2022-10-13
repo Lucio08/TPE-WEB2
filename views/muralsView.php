@@ -8,28 +8,38 @@ class MuralsViews
   {
     $this->smarty = new Smarty();
   }
-  function showMurals($murals)
+
+  //la vista es independdiente a lo que le mande por parametro
+  function showMurals($murals, $title = null)
   {
+    session_start();
     /*
     asigno varibales que voy a usar en el template que tiene el valor de la variable que me trae
     el constructor
     */
-
-    $this->smarty->assign('murales', $murals);
-    $this->smarty->display('templates/showMurals.tpl');
+    $this->smarty->assign('murales', $murals); 
+    $this->smarty->assign('title', $title); 
+    $this->smarty->display('templates/general/showMurals.tpl');
   }
 
   function showMuralsById($muralsById)
   {
     $this->smarty->assign('mural', $muralsById);
-    $this->smarty->display('templates/viewMural.tpl');
+    $this->smarty->display('templates/murals/viewMural.tpl');
+  }
+  function showFormsMurals($techniques){
+    
+    $this->smarty->assign('techniques', $techniques);
+    $this->smarty->display('templates/murals/formCreateMural.tpl');
   }
 
-  function showMuralsByCategories($itemsByCategories){
-    $this->smarty->assign('muralC', $itemsByCategories);
-    $this->smarty->display('techniques.tpl');
+  function showEditMural($muralEdit, $techniques, $technique){
+    $this->smarty->assign('mural', $muralEdit);
+    $this->smarty->assign('nameCategories', $techniques);
+    $this->smarty->assign('technique', $technique);
+    $this->smarty->display('templates/murals/formEditMural.tpl');
+  }
 }
- /* function showAddMural(){
-    $this->
-  }*/
-}
+
+
+

@@ -12,7 +12,6 @@ class MuralsModels
   {
     //abro conexion a la db
 
-
     //preparo consulta y la envio
     $query = $this->db->prepare('SELECT * FROM murales');
     $query->execute();
@@ -22,7 +21,7 @@ class MuralsModels
 
     return $murals;
   }
-  
+
   //FUNCION QUE ME TRAE  INFORMACION EXTRA DEL MURAL
   function getMuralsById($id)
   {
@@ -32,19 +31,40 @@ class MuralsModels
     return $mural;
   }
 
-  /*function getMuralsByTyps($id)
+  function getMuralsByTypes($id)
   {
     $query = $this->db->prepare('SELECT * FROM murales WHERE id_tipo = ?');
     $query->execute([$id]);
     $muralByCategories = $query->fetchAll(PDO::FETCH_OBJ);
     return $muralByCategories;
-  }*/
-
-  
-  /*function insertMural($nombre, $descripcion, $ubicacion, $anuario, $lugar, $imagen){
-    $query = $this->db->prepare('INSERT INTO `murales`(nombre,descripcion,id_tipo,lugar,anuario, lugar, imagen)VALUES(?,?,?,?,?,?,?)' );
-    $query->execute([$nombre, $descripcion, $ubicacion, $anuario, $lugar, $imagen]);
-    return $query; 
-    header("Location: " . BASE_URL);    */
   }
 
+
+  function deleteMuralById($id_mural)
+  {
+    $query = $this->db->prepare('DELETE FROM murales WHERE id_mural = ?');
+    $query->execute([$id_mural]);
+  }
+
+  function insertMural($nameCategories, $murals, $description, $location, $place, $year, $img)
+  {
+    $query = $this->db->prepare('INSERT INTO `murales`(`id_tipo`,`nombre`,`descripcion`,`ubicacion`, `lugar`, `anuario`,`imagen`) VALUES (?,?,?,?,?,?,?)');
+    $query->execute(array($nameCategories, $murals, $description, $location, $place, $year, $img));
+    return $this->db->lastInsertId();
+  }
+
+  function getOneMural($id_mural)
+  {
+    $query = $this->db->prepare('SELECT * FROM murales where id_mural = ?');
+    $query->execute(array($id_mural));
+
+    $mural = $query->fetch(PDO::FETCH_OBJ);
+    return $mural;
+  }
+
+  function updateMural($id_mural,$id_tipo, $nameMural, $description, $location, $place, $year, $img)
+  { 
+    $query = $this->db->prepare('UPDATE murales SET id_tipo=?, nombre=?, descripcion=?,ubicacion=?, lugar=?, anuario=?, imagen=? WHERE id_mural=?');
+    $query->execute(array($id_tipo, $nameMural, $description, $location, $place, $year, $img, $id_mural));
+  }
+}

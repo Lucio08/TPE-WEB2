@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <link rel="icon" type="image/x-icon" href=" ./images/favicon.ico">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href=" images/favicon.ico">
+  <link rel="stylesheet" href="css/main.css">
   <title> Arte y muralismo</title>
 </head>
 
@@ -63,26 +63,29 @@
                 </li>
               </ul>
             </li>
+            {if !isset($smarty.session.email)} 
             <li class="nav-item">
-              <a class="nav-link" href="logIn">Iniciar Sesion</a>
+              <a class="nav-link" href="login">Iniciar Sesion</a>
             </li>
+            {/if}
           </ul>
 
+          {if isset($smarty.session.email)}
           <div class="flex-shrink-0 dropdown">
             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
               aria-expanded="false">
               <img src="https://github.com/Lucio08.png" alt="mdo" width="32" height="32" class="rounded-circle">
             </a>
             <ul class="dropdown-menu text-small shadow">
-              <li><a class="dropdown-item" href="addTechniques">Administrar Tecnicas</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="addFormTechniques">Agregar tecnica</a></li>
+              <li><a class="dropdown-item" href="addFormMural">Agregar mural</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+              <li><a class="dropdown-item" href="logout">Cerrar Sesion</a></li>
             </ul>
           </div>
+          {/if}
         </div>
       </div>
       <form class="d-flex" role="search">

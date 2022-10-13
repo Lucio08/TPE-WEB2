@@ -1,0 +1,20 @@
+a{
+    text-decoration: none;
+}
+.content{
+    margin: 10px;
+    padding: 5px;
+}
+.btn-group{
+    display: flex;
+    width: 30px;
+    padding: 1px;
+    
+}
+
+h1{
+    
+    margin-left: 2rem;
+    font-weight: bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
