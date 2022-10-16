@@ -40,7 +40,7 @@ class MuralsControllers
     }
 
     
-    function listMuralsByTyps($id_tipo)
+    function listMuralsByTypes($id_tipo)
     {
         $title = $this->modelTypes->getOneTypes($id_tipo);
         $itemsByCategories = $this->model->getMuralsByTypes($id_tipo);

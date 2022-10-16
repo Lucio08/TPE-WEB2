@@ -58,7 +58,7 @@ switch ($params[0]) {
         break;
 
     case 'viewMuralsByTypes':
-        $muralsController->listMuralsByTyps($params[1]);
+        $muralsController->listMuralsByTypes($params[1]);
         break;
 
 
