@@ -28,10 +28,14 @@
       <label for="name-year" class="form-label">Año: </label>
       <input type="number" class="form-control" name="name-year">
     </div>
-    <div class="col-md-6">
+
+
+    <div class="col-md-6">    
       <label for="name-img" class="form-label">Imagen: </label>
-      <input type="file" class="form-control" name="name-img">
+      <input type="file" class="form-control" name="input_name" >
     </div>
+
+
     <div class="col-12">
       <button type="submit" class="btn btn-primary">Agregar mural</button>
     </div>

@@ -1,6 +1,9 @@
 {include file="templates/general/header.tpl"}
 <div class="content">
-<img src="images/{$mural->imagen}" class="img-fluid" width="1500px" alt="...">
+{if isset($mural->imagen)}
+    <td><img class="img-fluid" src="{$mural->imagen}"/></td>
+{/if}
+
 <table class="table table-bordered border-primary">
     <thead>
         <tr>
@@ -13,8 +16,7 @@
         </tr>
     </thead>
     <tbody>
-    <tr>
-      
+    <tr>  
       <td>{$mural->descripcion}</td>
       <th scope="row">{$mural->tecnica}</th>
       <td>{$mural->tecnicaDescripcion}</td>

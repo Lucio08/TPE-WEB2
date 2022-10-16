@@ -46,11 +46,28 @@ class MuralsModels
     $query->execute([$id_mural]);
   }
 
-  function insertMural($nameCategories, $murals, $description, $location, $place, $year, $img)
+  function insertMural($nameCategories, $murals, $description, $location, $place, $year, $img = null)
   {
-    $query = $this->db->prepare('INSERT INTO `murales`(`id_tipo`,`nombre`,`descripcion`,`ubicacion`, `lugar`, `anuario`,`imagen`) VALUES (?,?,?,?,?,?,?)');
-    $query->execute(array($nameCategories, $murals, $description, $location, $place, $year, $img));
-    return $this->db->lastInsertId();
+    $pathImg = null;
+    // si imagen es diferente de null
+    if ($img) {
+      $pathImg = $this->uploadImage($img); //genera archivo temporal en la carpeta images/murals y retorna la ruta
+
+      $query = $this->db->prepare('INSERT INTO `murales`(`id_tipo`,`nombre`,`descripcion`,`ubicacion`, `lugar`, `anuario`,`imagen`) VALUES (?,?,?,?,?,?,?)');
+      $query->execute([$nameCategories, $murals, $description, $location, $place, $year,  $pathImg]);
+      return $this->db->lastInsertId();
+    }else{
+      $query = $this->db->prepare('INSERT INTO `murales`(`id_tipo`,`nombre`,`descripcion`,`ubicacion`, `lugar`, `anuario`) VALUES (?,?,?,?,?,?)');
+      $query->execute([$nameCategories, $murals, $description, $location, $place, $year]);
+      return $this->db->lastInsertId();
+    }
+  }
+
+ private function uploadImage($img)
+  {
+    $target = 'images/murals/' . uniqid() . '.jpg'; //  le da un nombre unico a la imagen
+    move_uploaded_file($img, $target); /// mueve  los archivos temporales a la carpeta de las imagenes
+    return $target;
   }
 
   function getOneMural($id_mural)
@@ -62,9 +79,16 @@ class MuralsModels
     return $mural;
   }
 
-  function updateMural($id_mural,$id_tipo, $nameMural, $description, $location, $place, $year, $img)
-  { 
-    $query = $this->db->prepare('UPDATE murales SET id_tipo=?, nombre=?, descripcion=?,ubicacion=?, lugar=?, anuario=?, imagen=? WHERE id_mural=?');
-    $query->execute(array($id_tipo, $nameMural, $description, $location, $place, $year, $img, $id_mural));
+  function updateMural($id_mural, $id_tipo, $nameMural, $description, $location, $place, $year, $img = null)
+  {
+    $pathImg = null;
+    if ($img) {
+      $pathImg = $this->uploadImage($img);
+      $query = $this->db->prepare('UPDATE murales SET id_tipo=?, nombre=?, descripcion=?,ubicacion=?, lugar=?, anuario=?, imagen=? WHERE id_mural=?');
+      $query->execute(array($id_tipo, $nameMural, $description, $location, $place, $year, $pathImg, $id_mural));
+    } else {
+      $query = $this->db->prepare('UPDATE murales SET id_tipo=?, nombre=?, descripcion=?,ubicacion=?, lugar=?, anuario=?  WHERE id_mural=?');
+      $query->execute(array($id_tipo, $nameMural, $description, $location, $place, $year, $id_mural));
+    }
   }
 }

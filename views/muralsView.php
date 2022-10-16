@@ -24,6 +24,7 @@ class MuralsViews
 
   function showMuralsById($muralsById)
   {
+    session_start();
     $this->smarty->assign('mural', $muralsById);
     $this->smarty->display('templates/murals/viewMural.tpl');
   }
@@ -33,10 +34,9 @@ class MuralsViews
     $this->smarty->display('templates/murals/formCreateMural.tpl');
   }
 
-  function showEditMural($muralEdit, $techniques, $technique){
+  function showEditMural($muralEdit, $techniques){
     $this->smarty->assign('mural', $muralEdit);
     $this->smarty->assign('nameCategories', $techniques);
-    $this->smarty->assign('technique', $technique);
     $this->smarty->display('templates/murals/formEditMural.tpl');
   }
 }

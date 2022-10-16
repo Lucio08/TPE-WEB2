@@ -10,6 +10,7 @@ include_once 'helpers/authHelper.php';
 class MuralsControllers
 {
     //Controlador que se encarga de coordinar todo lo referido a murales
+    //atributos de las clases
     private $model;
     private $view;
     private $modelTypes;
@@ -25,13 +26,13 @@ class MuralsControllers
 
     function  showMurals()
     {
-
         //obtengo murales del modelo
         $murals = $this->model->getAllMurals();
         //actualizo la vista
         $this->view->showMurals($murals);
     }
 
+    //trae el mural por id 
     function showMuralsById($id)
     {
         $muralsById = $this->model->getMuralsById($id);
@@ -44,9 +45,8 @@ class MuralsControllers
      show murals me muestra lo que le mande por paramertros
      entonces en showmurals(itemsporcategoria) me muestra los murales que filtre en la consulta getMuralsbytyps
     */
-    
     function listMuralsByTyps($id_tipo)
-    {   
+    {
         $title = $this->modelTypes->getOneTypes($id_tipo);
         $itemsByCategories = $this->model->getMuralsByTypes($id_tipo);
         $this->view->showMurals($itemsByCategories, $title);
@@ -55,7 +55,6 @@ class MuralsControllers
     function deleteMurals($id_mural)
     {
         $this->helper->checkLoggedIn();
-
         $this->model->deleteMuralById($id_mural);
         header("Location:" . BASE_URL . "home");
     }
@@ -76,8 +75,13 @@ class MuralsControllers
             $location = $_POST['name-location'];
             $place = $_POST['name-place'];
             $year = $_POST['name-year'];
-            $img = $_POST['name-img'];
-            $this->model->insertMural($nameCategories, $murals, $description, $location, $place, $year, $img);
+
+            //cargo imagen y llama al modelo
+            if ($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {
+                $this->model->insertMural($nameCategories, $murals, $description, $location, $place, $year, $_FILES['input_name']['tmp_name']);
+            } else {
+                $this->model->insertMural($nameCategories, $murals, $description, $location, $place, $year);
+            }
             header("Location:" . BASE_URL . "home");
         }
     }
@@ -86,26 +90,30 @@ class MuralsControllers
     {
         $this->helper->checkLoggedIn();
 
-        $muralEdit = $this->model->getOneMural($id_mural);
+        $muralEdit = $this->model->getMuralsById($id_mural);
         $techniques = $this->modelTypes->getTypes();
 
         //trae la tecnica de un mural en especifico
-        $technique = $this->modelTypes->getOneTypes($muralEdit->id_tipo);
-        $this->view->showEditMural($muralEdit, $techniques, $technique);
+        //$technique = $this->model->getMuralsById($muralEdit->id_tipo);
+        $this->view->showEditMural($muralEdit, $techniques);
     }
 
     function muralsEdit($id_mural)
     {
-
-        if (!empty($_POST['nameCategories']) && !empty($_POST['muralEdit']) && !empty($_POST['descriptionEdit']) && !empty($_POST['ubicacionEdit']) && !empty($_POST['lugarEdit']) && !empty($_POST['anuarioEdit']) && !empty($_POST['imagenEdit'])) {
+        if (!empty($_POST['nameCategories']) && !empty($_POST['muralEdit']) && !empty($_POST['descriptionEdit']) && !empty($_POST['ubicacionEdit']) && !empty($_POST['lugarEdit']) && !empty($_POST['anuarioEdit'])) {
             $id_tipo = $_POST['nameCategories'];
             $nameMural = $_POST['muralEdit'];
             $description = $_POST['descriptionEdit'];
             $location = $_POST['ubicacionEdit'];
             $place = $_POST['lugarEdit'];
             $year = $_POST['anuarioEdit'];
-            $img = $_POST['imagenEdit'];
-            $this->model->updateMural($id_mural, $id_tipo, $nameMural, $description, $location, $place, $year, $img);
+
+
+            if ($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png"){
+                $this->model->updateMural($id_mural, $id_tipo, $nameMural, $description, $location, $place, $year, $_FILES['input_name']['tmp_name']);
+            } else {
+                $this->model->updateMural($id_mural, $id_tipo, $nameMural, $description, $location, $place, $year);
+            }
             header("Location:" . BASE_URL . "home");
         }
     }

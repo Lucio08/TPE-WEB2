@@ -1,14 +1,14 @@
 {include file="templates/general/header.tpl"}
 <div class="content">
-    <form class="row g-3" method="POST" action="editMural/{$mural->id_mural}">
+    <form class="row g-3" method="POST" action="editMural/{$mural->id_mural}" enctype="multipart/form-data">
     
         <select name="nameCategories">
-            <option value="{$technique->id_tipo}" selected>{$technique->tecnica}</option>
+
+            <option value="{$mural->id_tipo}" selected>{$mural->tecnica}</option>
             {foreach from=$nameCategories item=$name}
-                {if $name->tecnica != $technique->tecnica}
-                    <option value="{$name->id_tipo}">{$name->tecnica}</option>
-                {/if}
-                
+                {if $name->tecnica!=$mural->tecnica}//mural que estoy editando
+                    <option value="{$name->id_tipo}">{$name->tecnica}</option>  
+                {/if}             
             {/foreach}
         </select>
         <div class="mb-3">
@@ -34,13 +34,17 @@
             <input type="number"  class="form-control" value='{$mural->anuario}' name="anuarioEdit" rows="3" required></input>
         </div>
         <div class="mb-3">
-            <label for="imagenEdit" class="form-label">Imagen: </label>
-            <input type="text" class="form-control" value='{$mural->imagen}' name="imagenEdit" rows="3" required></input>
+            <label for="input_name" class="form-label">Imagen: </label>
+            <input type="file" class="form-control" value='{$mural->imagen}' name="input_name" rows="3"></input>
         </div>
         <div class="col-auto">
             <button type="submit" name="idEdit" class="btn btn-primary mb-3" value='{$mural->id_mural}'>Confirmar
                 cambios</button>
         </div>
+        {$mural->imagen}
     </form>
+    <div class="col-auto">
+    <a href="home" class="btn btn-primary btn-sm content">cancelar</a>
+   </div>
 </div>
 {include file="templates/general/footer.tpl"}
