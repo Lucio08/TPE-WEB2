@@ -39,12 +39,7 @@ class MuralsControllers
         $this->view->showMuralsById($muralsById);
     }
 
-    /*paso id desde el router al controller
-    Al controlador le paso por paramentro el id_tipo(nombre de referencia para saber)
-    al modelo le pido los murales por tipo y lo guardo en variable.
-     show murals me muestra lo que le mande por paramertros
-     entonces en showmurals(itemsporcategoria) me muestra los murales que filtre en la consulta getMuralsbytyps
-    */
+    
     function listMuralsByTyps($id_tipo)
     {
         $title = $this->modelTypes->getOneTypes($id_tipo);

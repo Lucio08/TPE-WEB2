@@ -50,13 +50,14 @@ class TypesControllers
     {   
         
         $this->helper->checkLoggedIn();
-
-        
+        //llamo tecnica y me trae los murales de ese tipo
         $muralsByTypes =  $this->modelMurals->getMuralsByTypes($id_tipo);
-        if(empty ($muralsByTypes)){
+        if(empty($muralsByTypes)){
+            //si esa tecnia no tiene murales entonces llama al delete
             $this->model->deleteTypes($id_tipo);
             header("Location:" . BASE_URL . "techniques");
         }else{
+            //sino errror
             $this->viewTypes->showError("Error, esta tecnica contiene murales");
         }
        
@@ -78,7 +79,6 @@ class TypesControllers
             $materials = $_POST['materialsEdit'];
             $description = $_POST['descriptionEdit'];
             $history = $_POST['historyEdit'];
-            var_dump($techniques);
             $this->model->updateTechniques($id_tipo, $techniques, $materials, $description, $history);
             header("Location:" . BASE_URL . "techniques");        
         }

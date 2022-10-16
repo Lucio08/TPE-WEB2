@@ -35,7 +35,7 @@ class MuralsModels
   {
     $query = $this->db->prepare('SELECT * FROM murales WHERE id_tipo = ?');
     $query->execute([$id]);
-    $muralByCategories = $query->fetchAll(PDO::FETCH_OBJ);
+    $muralByCategories = $query->fetch(PDO::FETCH_OBJ);
     return $muralByCategories;
   }
 
