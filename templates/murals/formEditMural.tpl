@@ -41,7 +41,7 @@
             <button type="submit" name="idEdit" class="btn btn-primary mb-3" value='{$mural->id_mural}'>Confirmar
                 cambios</button>
         </div>
-        {$mural->imagen}
+       
     </form>
     <div class="col-auto">
     <a href="home" class="btn btn-primary btn-sm content">cancelar</a>
