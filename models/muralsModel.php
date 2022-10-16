@@ -88,7 +88,7 @@ class MuralsModels
       $query->execute(array($id_tipo, $nameMural, $description, $location, $place, $year, $pathImg, $id_mural));
     } else {
       $query = $this->db->prepare('UPDATE murales SET id_tipo=?, nombre=?, descripcion=?,ubicacion=?, lugar=?, anuario=?  WHERE id_mural=?');
-      $query->execute(array($id_tipo, $nameMural, $description, $location, $place, $year, $id_mural));
+      $query->execute(array($id_tipo, $nameMural, $description, $location, $place, $year, $id_mural)) ;
     }
   }
 }
