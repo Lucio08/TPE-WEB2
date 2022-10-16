@@ -67,8 +67,7 @@ INSERT INTO `murales` (`id_tipo`, `id_mural`, `nombre`, `descripcion`, `ubicacio
 (2, 6, '\"UN NUEVO AMANECER\"', 'Refleja la busqueda incansable de Madres y Abuelas de Plaza de Mayo, que, tras la noche mas oscura de nuestro pais, luchan por un nuevo amanecer para nuestra historia desde la Memoria, la Verdad y la Justicia. Realizado en 2021 por Berenice Martinez en el taller de Muralismo del prof Martin Meza de la Escuela de Arte de Berisso.', 'Berisso, Prov. de Bs As.', 'Escuela de Arte de Berisso', 2021, 'images/murals/6348a29a5d28d.jpg'),
 (3, 7, '\"HOMENAJE\"', 'Mural de esgrafiado hecho junto a Pablo Lopez y Julian Pons. Es un homenaje a un señor llamado Pablo que poseía un viñedo en Carhué. La tematica desarollada hace referencia al trabajo que tuvo que realizar la familia para poder llevar adelante un proyecto de esa magnitud en un espacio geografico que no está preparado para ello. Se pueden observar herramientas y manos que representan el trabajo.', 'Carhué, Argenitna.', 'Arte publico', 2021, 'images/murals/6348a2b497bca.jpg'),
 (3, 9, '\"UNA POSTAL DE AZUL EN LA PLATA\"', 'Este mural se encuentra en el Centro Universitario Azuleño (CUA) de La plata y fue hecho con el marco de un taller Intesivo de Mural Esgrafiado con el  fin de reinvidicar la educacion publica y la historia del CUA.', 'La Plata, Prov de Bs As', ' Centro universitario Azuleño (CUA)', 2019, 'images/murals/6348a2c6118f9.jpg'),
-(1, 27, '\"DIEGO MARADONA, ETERNO\"', 'ddd', 'ddd', '-', 2021, 'images/murals/6348a3a7a8354.jpg'),
-(25, 32, 'LULO CRACK ', 'GRAN TOMADOR DE FERNET', 'JUAREZ CAMPO NO ENCONTRADO', 'INDOCUMENTADO', 7000, 'images/murals/634b52d939adb.jpg');
+(1, 27, '\"DIEGO MARADONA, ETERNO\"', 'ddd', 'ddd', '-', 2021, 'images/murals/6348a3a7a8354.jpg');
 
 -- --------------------------------------------------------
 

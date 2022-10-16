@@ -42,6 +42,7 @@ class MuralsControllers
     
     function listMuralsByTypes($id_tipo)
     {
+        
         $title = $this->modelTypes->getOneTypes($id_tipo);
         $itemsByCategories = $this->model->getMuralsByTypes($id_tipo);
         $this->view->showMurals($itemsByCategories, $title);
@@ -52,6 +53,7 @@ class MuralsControllers
         $this->helper->checkLoggedIn();
         $this->model->deleteMuralById($id_mural);
         header("Location:" . BASE_URL . "home");
+
     }
 
     function showFormMurals()
