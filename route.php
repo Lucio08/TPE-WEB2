@@ -104,5 +104,5 @@ switch ($params[0]) {
 
     default:
         header('Location: 404.php');
-        break;
+        break ;
 }
