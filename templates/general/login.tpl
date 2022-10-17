@@ -3,14 +3,14 @@
 <div class="content">
   <form method="POST" action="verify">
     <div class="row mb-3">
-      <label for="userEmail" class="col-sm-2 col-form-label">Email</label>
+      <label for="userEmail" class="col-sm-2 col-form-label">Email: </label>
       <div class="col-sm-10">
         <input type="email" class="form-control" name="userEmail">
       </div>
     </div>
 
     <div class="row mb-3">
-      <label for="userPassword" class="col-sm-2 col-form-label">Password</label>
+      <label for="userPassword" class="col-sm-2 col-form-label">Contraseña: </label>
       <div class="col-sm-10">
         <input type="password" class="form-control" id="inputPassword3" name="userPassword">
       </div>
