@@ -33,9 +33,9 @@ switch ($params[0]) {
         $authController->showFormLogin();
         break;
 
-    case 'hash':
+    /*case 'hash':
         $authController->generateHash();
-        break;
+        break;*/
 
     case 'verify':
         $authController->verifyUser();
