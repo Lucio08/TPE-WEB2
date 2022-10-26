@@ -32,30 +32,32 @@ class MuralsControllers
         $this->view->showMurals($murals);
     }
 
-    //trae el mural por id 
+    //trae  murales por id asi puedo ver los detalles de un mural en especifico
     function showMuralsById($id)
     {
         $muralsById = $this->model->getMuralsById($id);
         $this->view->showMuralsById($muralsById);
     }
 
-    
+    //listo los murales por tiposs
     function listMuralsByTypes($id_tipo)
     {
-        
+        //logro que cuando filtre murales por tecnica aparezca el nombre de la misma
         $title = $this->modelTypes->getOneTypes($id_tipo);
+        
         $itemsByCategories = $this->model->getMuralsByTypes($id_tipo);
         $this->view->showMurals($itemsByCategories, $title);
     }
 
+    //elimino murales por id
     function deleteMurals($id_mural)
     {
         $this->helper->checkLoggedIn();
         $this->model->deleteMuralById($id_mural);
         header("Location:" . BASE_URL . "home");
-
     }
 
+    //formulario que me lleva a crear un mural nuevo
     function showFormMurals()
     {
         $this->helper->checkLoggedIn();
@@ -63,6 +65,7 @@ class MuralsControllers
         $this->view->showFormsMurals($techniques);
     }
 
+    //verifico que los datos del form no esten vacio
     function createNewMurals()
     {
         if (!empty($_POST['name-categories']) && !empty($_POST['name-murals']) && !empty($_POST['name-description']) && !empty($_POST['name-location']) && !empty($_POST['name-place']) && !empty($_POST['name-year'])) {
@@ -83,18 +86,21 @@ class MuralsControllers
         }
     }
 
+    //form para editar mural
     function showMuralsEdit($id_mural)
     {
+        //verifica que este iniciada la sesion
         $this->helper->checkLoggedIn();
 
+        //trae informacion de un mural en especifico
         $muralEdit = $this->model->getMuralsById($id_mural);
+        //trae los tipos de mural
         $techniques = $this->modelTypes->getTypes();
 
-        //trae la tecnica de un mural en especifico
-        //$technique = $this->model->getMuralsById($muralEdit->id_tipo);
         $this->view->showEditMural($muralEdit, $techniques);
     }
 
+    //verifica datos del form   
     function muralsEdit($id_mural)
     {
         if (!empty($_POST['nameCategories']) && !empty($_POST['muralEdit']) && !empty($_POST['descriptionEdit']) && !empty($_POST['ubicacionEdit']) && !empty($_POST['lugarEdit']) && !empty($_POST['anuarioEdit'])) {
@@ -106,7 +112,7 @@ class MuralsControllers
             $year = $_POST['anuarioEdit'];
 
 
-            if ($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png"){
+            if ($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {
                 $this->model->updateMural($id_mural, $id_tipo, $nameMural, $description, $location, $place, $year, $_FILES['input_name']['tmp_name']);
             } else {
                 $this->model->updateMural($id_mural, $id_tipo, $nameMural, $description, $location, $place, $year);

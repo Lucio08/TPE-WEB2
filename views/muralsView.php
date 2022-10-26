@@ -28,8 +28,7 @@ class MuralsViews
     $this->smarty->assign('mural', $muralsById);
     $this->smarty->display('templates/murals/viewMural.tpl');
   }
-  function showFormsMurals($techniques){
-    
+  function showFormsMurals($techniques){ 
     $this->smarty->assign('techniques', $techniques);
     $this->smarty->display('templates/murals/formCreateMural.tpl');
   }

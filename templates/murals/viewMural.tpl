@@ -1,30 +1,14 @@
 {include file="templates/general/header.tpl"}
 <div class="content">
-{if isset($mural->imagen)}
-    <td><img class="img-fluid" src="{$mural->imagen}"/></td>
-{/if}
-
-<table class="table table-bordered border-primary">
-    <thead>
-        <tr>
-           
-            <th scope="col">Descripción del mural</th>
-            <th scope="col">Técnica</th>
-            <th scope="col">Descripción de la técnica</th>
-            <th scope="col">Materiales</th>
-            <th scope="col">Historia</th>
-        </tr>
-    </thead>
-    <tbody>
-    <tr>  
-      <td>{$mural->descripcion}</td>
-      <th scope="row">{$mural->tecnica}</th>
-      <td>{$mural->tecnicaDescripcion}</td>
-      <td>{$mural->materiales}</td>
-      <td>{$mural->historia}</td>
-    </tr>
-    </tbody>
-</table>
-<a href="home" type="button" class="btn btn-primary btn-sm" class="link">Volver</a>
-</div>
-{include file="templates/general/footer.tpl"}
+        <ul>
+        {if isset($mural->imagen)}
+            <li><img class="img-fluid" src="{$mural->imagen}" ></li>
+        {/if}
+            <li> Descripcion del mural: </li> <p>{$mural->descripcion}</p>
+            <li>Tecnica: </li><p>{$mural->tecnica}</p>
+            <li>Lugar: </li><p>{$mural->lugar}</p>
+            <li>Ubicacion: </li><p>{$mural->ubicacion}</p>
+        </ul>
+        <a href="home" type="button" class="btn btn-primary btn-sm" class="link">Volver</a>
+    </div>
+    {include file="templates/general/footer.tpl"}

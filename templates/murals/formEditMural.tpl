@@ -38,8 +38,7 @@
             <input type="file" class="form-control" value='{$mural->imagen}' name="input_name" rows="3"></input>
         </div>
         <div class="col-auto">
-            <button type="submit" name="idEdit" class="btn btn-primary mb-3" value='{$mural->id_mural}'>Confirmar
-                cambios</button>
+            <button type="submit" name="idEdit" class="btn btn-primary mb-3" value='{$mural->id_mural}'>Confirmar cambios</button>
         </div>
        
     </form>

@@ -31,6 +31,7 @@ class MuralsModels
     return $mural;
   }
 
+  //funcion que trae murales por tipos 
   function getMuralsByTypes($id)
   {
     $query = $this->db->prepare('SELECT * FROM murales WHERE id_tipo = ?');
@@ -45,6 +46,7 @@ class MuralsModels
     $query = $this->db->prepare('DELETE FROM murales WHERE id_mural = ?');
     $query->execute([$id_mural]);
   }
+  
 
   function insertMural($nameCategories, $murals, $description, $location, $place, $year, $img = null)
   {
@@ -56,6 +58,7 @@ class MuralsModels
       $query = $this->db->prepare('INSERT INTO `murales`(`id_tipo`,`nombre`,`descripcion`,`ubicacion`, `lugar`, `anuario`,`imagen`) VALUES (?,?,?,?,?,?,?)');
       $query->execute([$nameCategories, $murals, $description, $location, $place, $year,  $pathImg]);
       return $this->db->lastInsertId();
+      
     }else{
       $query = $this->db->prepare('INSERT INTO `murales`(`id_tipo`,`nombre`,`descripcion`,`ubicacion`, `lugar`, `anuario`) VALUES (?,?,?,?,?,?)');
       $query->execute([$nameCategories, $murals, $description, $location, $place, $year]);
@@ -63,12 +66,14 @@ class MuralsModels
     }
   }
 
+
  private function uploadImage($img)
   {
     $target = 'images/murals/' . uniqid() . '.jpg'; //  le da un nombre unico a la imagen
     move_uploaded_file($img, $target); /// mueve  los archivos temporales a la carpeta de las imagenes
     return $target;
   }
+
 
   function getOneMural($id_mural)
   {
@@ -78,6 +83,7 @@ class MuralsModels
     $mural = $query->fetch(PDO::FETCH_OBJ);
     return $mural;
   }
+
 
   function updateMural($id_mural, $id_tipo, $nameMural, $description, $location, $place, $year, $img = null)
   {

@@ -19,19 +19,22 @@ class TypesControllers
         $this->viewTypes = new TypesViews();
         $this->helper = new AuthHelper();
     }
+
+    //me trae todas las tecnicas
     function types()
     {
         $types = $this->model->getTypes();
         $this->viewTypes->showTypes($types);
     }
 
+    //me dirije a un form donde puedo crear una tecnica
     function showCreateForm()
     {   
         $this->helper->checkLoggedIn();
         $this->viewTypes->createForm();
     }
 
-
+    //verifica que los datos del form no esten vacios
     function createTypesMurals()
     {
         if (!empty($_POST['input_techniques']) && !empty($_POST['input_materials']) && !empty($_POST['input_description'])&& !empty($_POST['input_history'])) {
@@ -45,10 +48,9 @@ class TypesControllers
             echo 'No Anda';
         }
     }
-
+  
     function deleteTypes($id_tipo)
     {   
-        
         $this->helper->checkLoggedIn();
         //llamo tecnica y me trae los murales de ese tipo
         $muralsByTypes =  $this->modelMurals->getMuralsByTypes($id_tipo);
@@ -57,12 +59,13 @@ class TypesControllers
             $this->model->deleteTypes($id_tipo);
             header("Location:" . BASE_URL . "techniques");
         }else{
-            //sino errror
+            //sino error
             $this->viewTypes->showError("Error, esta tecnica contiene murales");
         }
        
     }
 
+    //funcion que lleva a un formulario para editar
     function showFormEdit($id_tipo)
     {   
         $this->helper->checkLoggedIn();
@@ -70,9 +73,9 @@ class TypesControllers
         $this->viewTypes->showEditTypes($tipoEdit);
     }
 
+    //verifica que los datos no esten vacios
     function editTechniques($id_tipo)
     {   
-    
         if (!empty($_POST['idEdit']) && !empty($_POST['techniquesEdit']) && !empty($_POST['descriptionEdit']) && !empty($_POST['materialsEdit']) && !empty($_POST['historyEdit'])) {
             $id_tipo = $_POST['idEdit'];
             $techniques = $_POST['techniquesEdit'];

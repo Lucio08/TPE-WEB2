@@ -1,5 +1,6 @@
 <?php
 require_once './libreria/smarty-4.2.1/libs/Smarty.class.php';
+
 class AuthView
 {
     private $smarty;
@@ -9,7 +10,7 @@ class AuthView
     }
 
     function showFormLogin($error = null)
-    {   
+    {
         $this->smarty->assign("error", $error);
         $this->smarty->display('templates/general/login.tpl');
     }
