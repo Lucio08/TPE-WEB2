@@ -26,4 +26,3 @@
   </ul>
 </footer>
 </div>
-</footer>
